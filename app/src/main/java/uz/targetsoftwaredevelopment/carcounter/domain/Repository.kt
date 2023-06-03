@@ -4,7 +4,19 @@ import uz.targetsoftwaredevelopment.carcounter.data.DirectionTypes
 import uz.targetsoftwaredevelopment.carcounter.data.LocalStorage
 import uz.targetsoftwaredevelopment.carcounter.data.VehicleTypes
 
-class Repository {
+class Repository private constructor() {
+
+    companion object {
+        private lateinit var instance: Repository
+
+        fun getInstance(): Repository {
+            if (!::instance.isInitialized) {
+                instance = Repository()
+            }
+            return instance
+        }
+    }
+
     private val localStorage = LocalStorage.getInstance()
 
     fun setData(vehicleTypes: VehicleTypes, directionTypes: DirectionTypes, count: Int) {
@@ -107,7 +119,107 @@ class Repository {
         }
     }
 
-    fun getData(vehicleTypes: VehicleTypes, directionTypes: DirectionTypes): Int {
+    fun increaseCount(vehicleTypes: VehicleTypes, directionTypes: DirectionTypes): Int {
+        return when (vehicleTypes) {
+            VehicleTypes.CAR -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.carA
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.carB
+                    }
+                }
+            }
+
+            VehicleTypes.MINIBUS -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.miniBusA
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.miniBusB
+                    }
+                }
+            }
+
+            VehicleTypes.BUS -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.busA
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.busB
+                    }
+                }
+            }
+
+            VehicleTypes.TRUCK_UP_TO3 -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.truckUpTo3A
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.truckUpTo3B
+                    }
+                }
+            }
+
+            VehicleTypes.TRUCK_UP_TO12 -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.truckUpTo12A
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.truckUpTo12B
+                    }
+                }
+            }
+
+            VehicleTypes.TRUCK_ABOVE_12 -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.truckAbove12A
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.truckAbove12B
+                    }
+                }
+            }
+
+            VehicleTypes.ROAD_TRAINS -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.roadTrainsA
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.roadTrainsB
+                    }
+                }
+            }
+
+            VehicleTypes.OTHER -> {
+                when (directionTypes) {
+                    DirectionTypes.A -> {
+                        ++localStorage.otherA
+                    }
+
+                    DirectionTypes.B -> {
+                        ++localStorage.otherB
+                    }
+                }
+            }
+        }
+    }
+
+    fun getCount(vehicleTypes: VehicleTypes, directionTypes: DirectionTypes): Int {
         return when (vehicleTypes) {
             VehicleTypes.CAR -> {
                 when (directionTypes) {
@@ -205,5 +317,13 @@ class Repository {
                 }
             }
         }
+    }
+
+    fun setAllData(data: String) {
+        localStorage.allData = "${localStorage.allData}$data"
+    }
+
+    fun getAllData(): String {
+        return localStorage.allData
     }
 }

@@ -5,6 +5,6 @@ import java.io.Serializable
 
 @Keep
 data class VehicleData(
-    val id: Int,
+    val count: Int,
     val name: String
 ) : Serializable
