@@ -5,6 +5,11 @@ import uz.targetsoftwaredevelopment.carcounter.app.App
 import uz.targetsoftwaredevelopment.carcounter.utils.IntPreference
 import uz.targetsoftwaredevelopment.carcounter.utils.StringPreference
 
+/**
+ * Date: 04/06/2023
+ * Developer: Abdulaziz Akhmedov
+ */
+
 class LocalStorage private constructor() {
     private val KEY = "sdedwdwefejhdjshdkfjhdkjfhdsjkhfkjsdfkhkjsdhjfdh"
     private val pref = SecurePreferences(App.instance, KEY, "language_preference.xml")

@@ -66,24 +66,22 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
                 android:layout_weight="1"
+                android:background="@color/secondary_color"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countCarA"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvCarA"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -101,22 +99,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countCarA"
+                        style="@style/countStyle"
+                        android:text="0" />
+
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countMinibusA"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvMinibusA"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -134,23 +133,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countMinibusA"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countBusA"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvBusA"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -168,23 +167,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countBusA"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countTruckUpTo3A"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvTruckUpTo3A"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -202,23 +201,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countTruckUpTo3A"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countTruckUpTo12A"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvTruckUpTo12A"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -236,23 +235,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countTruckUpTo12A"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countTruckAbove12A"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvTruckAbove12A"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -270,23 +269,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countTruckAbove12A"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countRoadTrainsA"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvRoadTrainsA"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -304,23 +303,23 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countRoadTrainsA"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
 
-                    <TextView
-                        android:id="@+id/countOtherA"
-                        style="@style/countStyle"
-                        android:text="0" />
-
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleLeft"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvOtherA"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -338,6 +337,10 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <TextView
+                        android:id="@+id/countOtherA"
+                        style="@style/countStyle"
+                        android:text="0" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -346,7 +349,9 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
                 android:layout_weight="1"
+                android:background="@color/secondary_color"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -358,12 +363,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvCarB"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -392,12 +398,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvMinibusB"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -426,12 +433,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvBusB"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -460,12 +468,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvTruckUpTo3B"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -494,12 +503,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvTruckUpTo12B"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -528,12 +538,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvTruckAbove12B"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -562,12 +573,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvRoadTrainsB"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -585,7 +597,6 @@
 
                     </androidx.cardview.widget.CardView>
 
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat style="@style/layoutStyle">
@@ -596,12 +607,13 @@
                         android:text="0" />
 
                     <androidx.cardview.widget.CardView
-                        style="@style/cardStyle"
+                        style="@style/cardStyleRight"
                         app:cardCornerRadius="16dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:id="@+id/cvOtherB"
-                            style="@style/cardStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:background="@color/white"
                             android:orientation="vertical">
 
@@ -625,5 +637,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

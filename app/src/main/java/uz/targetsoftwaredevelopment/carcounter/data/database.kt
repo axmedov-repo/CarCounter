@@ -2,6 +2,13 @@ package uz.targetsoftwaredevelopment.carcounter.data
 
 import uz.targetsoftwaredevelopment.carcounter.R
 
+/**
+ * Date: 04/06/2023
+ * Developer: Abdulaziz Akhmedov
+ */
+
+// This database is not used
+
 val vehiclesListA = listOf<VehicleEntity>(
     VehicleEntity(
         id = 0, img = R.drawable.img_car, name = "Cars", directionTypes = DirectionTypes.A

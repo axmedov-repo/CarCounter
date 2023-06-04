@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
@@ -13,20 +14,24 @@ import uz.targetsoftwaredevelopment.carcounter.R
 import uz.targetsoftwaredevelopment.carcounter.data.DirectionTypes
 import uz.targetsoftwaredevelopment.carcounter.data.VehicleData
 import uz.targetsoftwaredevelopment.carcounter.data.VehicleTypes
-import uz.targetsoftwaredevelopment.carcounter.data.vehiclesListA
-import uz.targetsoftwaredevelopment.carcounter.data.vehiclesListB
 import uz.targetsoftwaredevelopment.carcounter.databinding.ScreenMainBinding
 import uz.targetsoftwaredevelopment.carcounter.domain.Repository
+import uz.targetsoftwaredevelopment.carcounter.screens.viewmodel.MainViewModel
+import uz.targetsoftwaredevelopment.carcounter.screens.viewmodel.MainViewModelImpl
 import uz.targetsoftwaredevelopment.carcounter.utils.scope
-import uz.targetsoftwaredevelopment.carcounter.utils.showToast
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 
+/**
+ * Date: 04/06/2023
+ * Developer: Abdulaziz Akhmedov
+ */
+
 class MainScreen : Fragment(R.layout.screen_main) {
     private val binding by viewBinding(ScreenMainBinding::bind)
-    private val adapterA by lazy { VehiclesAdapter() }
-    private val adapterB by lazy { VehiclesAdapter() }
+    private val viewModel: MainViewModel by viewModels<MainViewModelImpl>()
+
     private val columnSeparator = "sdksjdksjdk"
     private val rowSeparator = "ueirueuireu"
     private val separatorForRepo = "jsnvnreneidsn"
@@ -34,114 +39,164 @@ class MainScreen : Fragment(R.layout.screen_main) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = binding.scope {
         super.onViewCreated(view, savedInstanceState)
-        setViews()
         setModels()
-    }
-
-    private fun setViews() = binding.scope {
-        countCarA.text = "${repository.getCount(VehicleTypes.CAR, DirectionTypes.A)}"
-        countCarB.text = "${repository.getCount(VehicleTypes.CAR, DirectionTypes.B)}"
-        countMinibusA.text = "${repository.getCount(VehicleTypes.MINIBUS, DirectionTypes.A)}"
-        countMinibusB.text = "${repository.getCount(VehicleTypes.MINIBUS, DirectionTypes.B)}"
-        countBusA.text = "${repository.getCount(VehicleTypes.BUS, DirectionTypes.A)}"
-        countBusB.text = "${repository.getCount(VehicleTypes.BUS, DirectionTypes.B)}"
-        countTruckUpTo3A.text = "${repository.getCount(VehicleTypes.TRUCK_UP_TO3, DirectionTypes.A)}"
-        countTruckUpTo3B.text = "${repository.getCount(VehicleTypes.TRUCK_UP_TO3, DirectionTypes.B)}"
-        countTruckUpTo12A.text = "${repository.getCount(VehicleTypes.TRUCK_UP_TO12, DirectionTypes.A)}"
-        countTruckUpTo12B.text = "${repository.getCount(VehicleTypes.TRUCK_UP_TO12, DirectionTypes.B)}"
-        countTruckAbove12A.text = "${repository.getCount(VehicleTypes.TRUCK_ABOVE_12, DirectionTypes.A)}"
-        countTruckAbove12B.text = "${repository.getCount(VehicleTypes.TRUCK_ABOVE_12, DirectionTypes.B)}"
-        countRoadTrainsA.text = "${repository.getCount(VehicleTypes.ROAD_TRAINS, DirectionTypes.A)}"
-        countRoadTrainsB.text = "${repository.getCount(VehicleTypes.ROAD_TRAINS, DirectionTypes.B)}"
-        countOtherA.text = "${repository.getCount(VehicleTypes.OTHER, DirectionTypes.A)}"
-        countOtherB.text = "${repository.getCount(VehicleTypes.OTHER, DirectionTypes.B)}"
-
-        var count = 0
-        cvCarA.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.CAR, DirectionTypes.A)
-            countCarA.text = "$count"
-            addData(VehicleData(count, "Cars"), "Direction A")
-        }
-        cvCarB.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.CAR, DirectionTypes.B)
-            countCarB.text = "$count"
-            addData(VehicleData(count, "Cars"), "Direction B")
-        }
-        cvMinibusA.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.MINIBUS, DirectionTypes.A)
-            countMinibusA.text = "$count"
-            addData(VehicleData(count, "Minibuses"), "Direction A")
-        }
-        cvMinibusB.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.MINIBUS, DirectionTypes.B)
-            countMinibusB.text = "$count"
-            addData(VehicleData(count, "Minibuses"), "Direction B")
-        }
-        cvBusA.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.BUS, DirectionTypes.A)
-            countBusA.text = "$count"
-            addData(VehicleData(count, "Buses"), "Direction A")
-        }
-        cvBusB.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.BUS, DirectionTypes.B)
-            countBusB.text = "$count"
-            addData(VehicleData(count, "Buses"), "Direction B")
-        }
-        cvTruckUpTo3A.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.TRUCK_UP_TO3, DirectionTypes.A)
-            countTruckUpTo3A.text = "$count"
-            addData(VehicleData(count, "Trucks up to 3.5 t"), "Direction A")
-        }
-        cvTruckUpTo3B.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.TRUCK_UP_TO3, DirectionTypes.B)
-            countTruckUpTo3B.text = "$count"
-            addData(VehicleData(count, "Trucks up to 3.5 t"), "Direction B")
-        }
-        cvTruckUpTo12A.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.TRUCK_UP_TO12, DirectionTypes.A)
-            countTruckUpTo12A.text = "$count"
-            addData(VehicleData(count, "Trucks up to 3.5–12 t"), "Direction A")
-        }
-        cvTruckUpTo12B.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.TRUCK_UP_TO12, DirectionTypes.B)
-            countTruckUpTo12B.text = "$count"
-            addData(VehicleData(count, "Trucks up to 3.5–12 t"), "Direction B")
-        }
-        cvTruckAbove12A.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.TRUCK_ABOVE_12, DirectionTypes.A)
-            countTruckAbove12A.text = "$count"
-            addData(VehicleData(count, "Trucks above 12 t"), "Direction A")
-        }
-        cvTruckAbove12B.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.TRUCK_ABOVE_12, DirectionTypes.B)
-            countTruckAbove12B.text = "$count"
-            addData(VehicleData(count, "Trucks above 12 t"), "Direction B")
-        }
-        cvRoadTrainsA.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.ROAD_TRAINS, DirectionTypes.A)
-            countRoadTrainsA.text = "$count"
-            addData(VehicleData(count, "Road trains"), "Direction A")
-        }
-        cvRoadTrainsB.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.ROAD_TRAINS, DirectionTypes.B)
-            countRoadTrainsB.text = "$count"
-            addData(VehicleData(count, "Road trains"), "Direction B")
-        }
-        cvOtherA.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.OTHER, DirectionTypes.A)
-            countOtherA.text = "$count"
-            addData(VehicleData(count, "Other"), "Direction A")
-        }
-        cvOtherB.setOnClickListener {
-            count = repository.increaseCount(VehicleTypes.OTHER, DirectionTypes.B)
-            countOtherB.text = "$count"
-            addData(VehicleData(count, "Other"), "Direction B")
-        }
+        setViews()
     }
 
     private fun setModels() = binding.scope {
-        adapterA.setData(vehiclesListA)
-        adapterB.setData(vehiclesListB)
+        viewModel.apply {
+            getCounts()
+
+            countCarACountLiveData.observe(viewLifecycleOwner) { count ->
+                countCarA.text = "$count"
+            }
+            countCarBCountLiveData.observe(viewLifecycleOwner) { count ->
+                countCarB.text = "$count"
+            }
+            countMinibusACountLiveData.observe(viewLifecycleOwner) { count ->
+                countMinibusA.text = "$count"
+            }
+            countMinibusBCountLiveData.observe(viewLifecycleOwner) { count ->
+                countMinibusB.text = "$count"
+            }
+            countBusACountLiveData.observe(viewLifecycleOwner) { count ->
+                countBusA.text = "$count"
+            }
+            countBusBCountLiveData.observe(viewLifecycleOwner) { count ->
+                countBusB.text = "$count"
+            }
+            countTruckUpTo3ACountLiveData.observe(viewLifecycleOwner) { count ->
+                countTruckUpTo3A.text = "$count"
+            }
+            countTruckUpTo3BCountLiveData.observe(viewLifecycleOwner) { count ->
+                countTruckUpTo3B.text = "$count"
+            }
+            countTruckUpTo12ACountLiveData.observe(viewLifecycleOwner) { count ->
+                countTruckUpTo12A.text = "$count"
+            }
+            countTruckUpTo12BCountLiveData.observe(viewLifecycleOwner) { count ->
+                countTruckUpTo12B.text = "$count"
+            }
+            countTruckAbove12ACountLiveData.observe(viewLifecycleOwner) { count ->
+                countTruckAbove12A.text = "$count"
+            }
+            countTruckAbove12BCountLiveData.observe(viewLifecycleOwner) { count ->
+                countTruckAbove12B.text = "$count"
+            }
+            countRoadTrainsACountLiveData.observe(viewLifecycleOwner) { count ->
+                countRoadTrainsA.text = "$count"
+            }
+            countRoadTrainsBCountLiveData.observe(viewLifecycleOwner) { count ->
+                countRoadTrainsB.text = "$count"
+            }
+            countOtherACountLiveData.observe(viewLifecycleOwner) { count ->
+                countOtherA.text = "$count"
+            }
+            countOtherBCountLiveData.observe(viewLifecycleOwner) { count ->
+                countOtherB.text = "$count"
+            }
+
+
+            increasedCountCarACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Cars"), "Direction A")
+            }
+            increasedCountCarBCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Cars"), "Direction B")
+            }
+            increasedCountMinibusACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Minibuses"), "Direction A")
+            }
+            increasedCountMinibusBCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Minibuses"), "Direction B")
+            }
+            increasedCountBusACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Buses"), "Direction A")
+            }
+            increasedCountBusBCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Buses"), "Direction B")
+            }
+            increasedCountTruckUpTo3ACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Trucks up to 3.5 t"), "Direction A")
+            }
+            increasedCountTruckUpTo3BCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Trucks up to 3.5 t"), "Direction B")
+            }
+            increasedCountTruckUpTo12ACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Trucks up to 3.5–12 t"), "Direction A")
+            }
+            increasedCountTruckUpTo12BCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Trucks up to 3.5–12 t"), "Direction B")
+            }
+            increasedCountTruckAbove12ACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Trucks above 12 t"), "Direction A")
+            }
+            increasedCountTruckAbove12BCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Trucks above 12 t"), "Direction B")
+            }
+            increasedCountRoadTrainsACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Road trains"), "Direction A")
+            }
+            increasedCountRoadTrainsBCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Road trains"), "Direction B")
+            }
+            increasedCountOtherACountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Other"), "Direction A")
+            }
+            increasedCountOtherBCountLiveData.observe(viewLifecycleOwner) { count ->
+                addData(VehicleData(count, "Other"), "Direction B")
+            }
+        }
+    }
+
+    private fun setViews() = binding.scope {
+        cvCarA.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.CAR, DirectionTypes.A)
+        }
+        cvCarB.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.CAR, DirectionTypes.B)
+        }
+        cvMinibusA.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.MINIBUS, DirectionTypes.A)
+        }
+        cvMinibusB.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.MINIBUS, DirectionTypes.B)
+        }
+        cvBusA.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.BUS, DirectionTypes.A)
+        }
+        cvBusB.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.BUS, DirectionTypes.B)
+        }
+        cvTruckUpTo3A.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.TRUCK_UP_TO3, DirectionTypes.A)
+        }
+        cvTruckUpTo3B.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.TRUCK_UP_TO3, DirectionTypes.B)
+        }
+        cvTruckUpTo12A.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.TRUCK_UP_TO12, DirectionTypes.A)
+        }
+        cvTruckUpTo12B.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.TRUCK_UP_TO12, DirectionTypes.B)
+        }
+        cvTruckAbove12A.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.TRUCK_ABOVE_12, DirectionTypes.A)
+        }
+        cvTruckAbove12B.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.TRUCK_ABOVE_12, DirectionTypes.B)
+        }
+        cvRoadTrainsA.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.ROAD_TRAINS, DirectionTypes.A)
+        }
+        cvRoadTrainsB.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.ROAD_TRAINS, DirectionTypes.B)
+        }
+        cvOtherA.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.OTHER, DirectionTypes.A)
+        }
+        cvOtherB.setOnClickListener {
+            viewModel.increaseCount(VehicleTypes.OTHER, DirectionTypes.B)
+        }
     }
 
     private fun addData(vehicleData: VehicleData, direction: String) = binding.scope {
@@ -150,7 +205,6 @@ class MainScreen : Fragment(R.layout.screen_main) {
         ), null, null,
             object : PermissionHandler() {
                 override fun onGranted() {
-                    showToast("${vehicleData.name}")
                     val dateFormat = SimpleDateFormat("dd/MM/yyyy HH:mm")
                     val date = Date(System.currentTimeMillis())
                     val dateStr = dateFormat.format(date)
@@ -174,7 +228,7 @@ class MainScreen : Fragment(R.layout.screen_main) {
                     easyCsv.setSeparatorColumn(columnSeparator)
                     easyCsv.setSeperatorLine(rowSeparator)
                     easyCsv.createCsvFile(
-                        "MyCsvFile",
+                        "TrafficCountSurvey_CSV_File",
                         headerList,
                         rowsList,
                         0,
