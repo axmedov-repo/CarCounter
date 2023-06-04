@@ -16,8 +16,8 @@
     </style>
 
     <style name="cardStyle">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_margin">1dp</item>
+        <item name="android:layout_width">124dp</item>
+        <item name="android:layout_margin">2dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
