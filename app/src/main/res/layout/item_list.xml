@@ -2,39 +2,28 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/cardStyle">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp">
+        app:cardCornerRadius="16dp"
+        style="@style/cardStyle">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@color/white"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            style="@style/cardStyle">
 
             <ImageView
                 android:id="@+id/imgVehicle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:adjustViewBounds="true"
-                tools:src="@drawable/img_car" />
+                tools:src="@drawable/img_car"
+                style="@style/customImgStyle" />
 
             <TextView
                 android:id="@+id/nameVehicle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:gravity="center"
                 android:text="Car"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                style="@style/nameStyle" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -42,13 +31,7 @@
 
     <TextView
         android:id="@+id/countVehicle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
         android:text="0"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        style="@style/countStyle" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

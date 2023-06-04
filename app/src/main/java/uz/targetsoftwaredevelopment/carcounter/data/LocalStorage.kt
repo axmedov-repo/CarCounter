@@ -21,7 +21,7 @@ class LocalStorage private constructor() {
     }
 
     var carA: Int by IntPreference(pref, 0)
-    var carB: Int by IntPreference(pref, 0)
+    var carB : Int by IntPreference(pref, 0)
 
     var miniBusA: Int by IntPreference(pref, 0)
     var miniBusB: Int by IntPreference(pref, 0)

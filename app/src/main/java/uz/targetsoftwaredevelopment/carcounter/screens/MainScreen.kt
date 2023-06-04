@@ -23,7 +23,6 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 
-
 class MainScreen : Fragment(R.layout.screen_main) {
     private val binding by viewBinding(ScreenMainBinding::bind)
     private val adapterA by lazy { VehiclesAdapter() }
@@ -171,20 +170,6 @@ class MainScreen : Fragment(R.layout.screen_main) {
 
                     val allDataStr = repository.getAllData()
                     val rowsList = allDataStr.split(separatorForRepo)
-                    /*rowsList.forEach {
-
-                    }*/
-
-
-                    /* val dataList: MutableList<String> = ArrayList()
-                     dataList.add(
-                         "${vehicleData.name}${columnSeparator}$direction${columnSeparator}${vehicleData.id}${columnSeparator}${
-                             dateStr.substring(
-                                 0,
-                                 10
-                             )
-                         }${columnSeparator}${dateStr.substring(11)}${rowSeparator}"
-                     )*/
 
                     easyCsv.setSeparatorColumn(columnSeparator)
                     easyCsv.setSeperatorLine(rowSeparator)
@@ -196,16 +181,6 @@ class MainScreen : Fragment(R.layout.screen_main) {
                         object : FileCallback {
                             override fun onSuccess(file: File) {
                                 // Handle success
-                                /* showToast("SUCCEED")
-                                 var outputStream: FileOutputStream? = null
-                                 try {
-                                     outputStream = FileOutputStream(file, true)
- //                                    outputStream.write(textToWrite.getBytes())
- //                                    outputStream.flush()
-                                     outputStream.close()
-                                 } catch (e: Exception) {
-                                     e.printStackTrace()
-                                 }*/
                             }
 
                             override fun onFail(err: String) {
